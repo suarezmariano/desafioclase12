@@ -20,11 +20,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
+const products = [];
 const messages = [];
 
 io.on('connection', (socket) => {
   console.log('Usuario nuevo conectado');
+  socket.emit('products', products);
   socket.emit('messages', messages);
+
+  socket.on('new-product', (data) => {
+    products.push(data);
+    io.sockets.emit('products', products);
+  });
 
   socket.on('new-message', (data) => {
     messages.push(data);

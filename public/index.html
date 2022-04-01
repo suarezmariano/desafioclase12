@@ -15,12 +15,42 @@
     <link rel="stylesheet" href="css/estilos.css" />
   </head>
   <body>
-    <form onsubmit="return addMessage(this)">
-      <input type="email" id="mail" placeholder="Correo Electronico" />
-      <input type="text" id="texto" placeholder="Ingresa un mesaje...." />
-      <input type="submit" value="Enviar" />
-    </form>
-    <div id="messages"></div>
+    <div>
+      <h2>Cargar producto</h2>
+      <form onsubmit="return addProduct(this)">
+        <input type="text" name="title" required placeholder="Titulo" /><br />
+        <input type="number" name="price" required placeholder="Precio" /><br />
+        <input
+          type="url"
+          name="thumbnail"
+          required
+          placeholder="Imagen"
+        /><br />
+        <input type="submit" value="Cargar Producto" />
+      </form>
+      <div id="products"></div>
+    </div>
+
+    <div>
+      <h2>Mensajes</h2>
+      <form onsubmit="return addMessage(this)">
+        <input
+          type="email"
+          id="mail"
+          required
+          placeholder="Correo Electronico"
+        />
+        <input
+          type="text"
+          id="texto"
+          required
+          placeholder="Ingresa un mesaje...."
+        />
+        <input type="submit" value="Enviar" />
+      </form>
+      <div id="messages"></div>
+    </div>
+
     <script src="js/main.js"></script>
   </body>
 </html>
