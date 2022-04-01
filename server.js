@@ -10,9 +10,7 @@ const io = new Socket(httpServer);
 //SERVER
 const PORT = 8080;
 const connectedServer = httpServer.listen(PORT, () => {
-  console.log(
-    `Servidor http escuchando en el puerto ${connectedServer.address().port}`
-  );
+  console.log(`Servidor HTTP en puerto ${connectedServer.address().port}`);
 });
 connectedServer.on('error', (error) =>
   console.log(`Error en servidor ${error}`)
@@ -21,3 +19,15 @@ connectedServer.on('error', (error) =>
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+
+const messages = [];
+
+io.on('connection', (socket) => {
+  console.log('Usuario nuevo conectado');
+  socket.emit('messages', messages);
+
+  socket.on('new-message', (data) => {
+    messages.push(data);
+    io.sockets.emit('messages', messages);
+  });
+});
