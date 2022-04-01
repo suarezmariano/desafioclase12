@@ -20,6 +20,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
+app.set('view engine', 'ejs');
+
 const products = [];
 const messages = [];
 
@@ -37,4 +39,8 @@ io.on('connection', (socket) => {
     messages.push(data);
     io.sockets.emit('messages', messages);
   });
+});
+
+app.get('/', (req, res) => {
+  res.render('index', { products });
 });

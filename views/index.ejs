@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productos & Chat APP</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/estilos.css" />
+  </head>
+  <body>
+    <div class="container mt-3">
+      <div class="jumbotron">
+        <h2>Cargar producto</h2>
+        <form onsubmit="return addProduct(this)">
+          <input type="text" name="title" required placeholder="Titulo" /><br />
+          <input
+            type="number"
+            name="price"
+            required
+            placeholder="Precio"
+          /><br />
+          <input
+            type="url"
+            name="thumbnail"
+            required
+            placeholder="Imagen"
+          /><br />
+          <input type="submit" value="Cargar Producto" />
+        </form>
+        <%- include("./partials/table.ejs") %>
+      </div>
+
+      <div class="jumbotron">
+        <h2>Mensajes</h2>
+        <form onsubmit="return addMessage(this)">
+          <input
+            type="email"
+            id="mail"
+            required
+            placeholder="Correo Electronico"
+          /><br />
+          <input
+            type="text"
+            id="texto"
+            required
+            placeholder="Ingresa un mesaje...."
+          /><br />
+          <input type="submit" value="Enviar" />
+        </form>
+        <div id="messages"></div>
+      </div>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>

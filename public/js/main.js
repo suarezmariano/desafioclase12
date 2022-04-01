@@ -1,19 +1,6 @@
 const socket = io.connect();
 
-const show = (data) => {
-  const chat = data
-    .map((elem, index) => {
-      return `<div>
-        <strong>${elem.title}</strong> 
-        <strong> [${elem.price}] </strong>
-        <img>: ${elem.thumbnail}</img>
-        </div>`;
-    })
-    .join(' ');
-  document.getElementById('messages').innerHTML = chat;
-};
-
-socket.on('products', (data) => show(data));
+socket.on('products', { products });
 
 const addProduct = (e) => {
   const product = {
@@ -41,6 +28,7 @@ const render = (data) => {
 socket.on('messages', (data) => render(data));
 
 const addMessage = (e) => {
+  e.preventDefault();
   const message = {
     mail: document.getElementById('mail').value,
     fyh: new Date().toLocaleString(),
