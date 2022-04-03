@@ -1,7 +1,6 @@
 const socket = io.connect();
 
 //PRODUCTOS DE TABLA
-
 const addProduct = (e) => {
   const product = {
     title: document.getElementById('title').value,
@@ -9,8 +8,7 @@ const addProduct = (e) => {
     thumbnail: document.getElementById('thumbnail').value,
   };
   socket.emit('new-product', product);
-  //document.getElementById('product-table').reset();
-  //document.getElementById('formProduct').reset();
+  document.getElementById('product-table').reset();
   return false;
 };
 
@@ -21,9 +19,9 @@ const renderMsj = (data) => {
   const chat = data
     .map((elem) => {
       return `<div>
-      <strong>${elem.mail}</strong> 
-      <strong> [${elem.fyh}] </strong>
-      <em>: ${elem.text}</em>
+      <b style="color:blue;">${elem.mail}</b> 
+      <span style="color:brown;"> [${elem.fyh}] </span>
+      <i style="color:green;">: ${elem.text}</i>
       </div>`;
     })
     .join(' ');
