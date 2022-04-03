@@ -10,7 +10,7 @@
     max-height: 170px;
   }
 </style>
-<% if(products.length !==0) { %>
+
 <div>
   <table id="products-table">
     <tr>
@@ -18,18 +18,11 @@
       <th>Price</th>
       <th>Thumbnail</th>
     </tr>
-    <% for (const product in products) {%>
+
     <tr>
-      <td><%= products[product].title %></td>
-      <td><%= products[product].price %></td>
-      <td>
-        <img src="<%= products[product].thumbnail %>" /><%
-        products[product].thumbnail %>
-      </td>
+      <td>title</td>
+      <td>price</td>
+      <td></td>
     </tr>
-    <% } %>
   </table>
 </div>
-<% } else{ %>
-<p>No hay productos cargados</p>
-<% }%>

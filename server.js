@@ -42,5 +42,5 @@ io.on('connection', (socket) => {
 });
 
 app.get('/', (req, res) => {
-  res.render('index', { products });
+  res.render('index');
 });

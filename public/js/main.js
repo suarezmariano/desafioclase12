@@ -17,6 +17,7 @@ const renderProd = (data) => {
 };
 
 const addProduct = (e) => {
+  e.preventDefault();
   const product = {
     title: document.getElementById('title').value,
     price: document.getElementById('price').value,
