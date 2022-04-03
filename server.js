@@ -31,7 +31,7 @@ io.on('connection', (socket) => {
   socket.emit('messages', messages);
 
   socket.on('new-product', (data) => {
-    products.push(data);
+    products.push(...products, data);
     io.sockets.emit('products', products);
   });
 
@@ -42,5 +42,5 @@ io.on('connection', (socket) => {
 });
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('index', { products });
 });

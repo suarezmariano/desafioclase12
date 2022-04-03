@@ -1,20 +1,6 @@
 const socket = io.connect();
 
 //PRODUCTOS DE TABLA
-socket.on('products', (data) => renderProd(data));
-
-const renderProd = (data) => {
-  const table = data
-    .map((elem) => {
-      return `<tr>
-      <td>${elem.title}</td> 
-      <td>${elem.price}</td>
-      <td><img src="${elem.thumbnail}"</td>
-      </tr>`;
-    })
-    .join(' ');
-  document.getElementById('products-table').innerHTML = table;
-};
 
 const addProduct = (e) => {
   const product = {
@@ -22,8 +8,9 @@ const addProduct = (e) => {
     price: document.getElementById('price').value,
     thumbnail: document.getElementById('thumbnail').value,
   };
-  console.log(product);
   socket.emit('new-product', product);
+  document.getElementById('product-table').reset;
+  document.getElementById('formProduct').reset;
   return false;
 };
 

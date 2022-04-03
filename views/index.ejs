@@ -18,7 +18,7 @@
     <div class="container mt-3">
       <div class="jumbotron">
         <h2>Cargar producto</h2>
-        <form onsubmit="return addProduct(this)">
+        <form onsubmit="return addProduct(this)" id="formProduct">
           <input type="text" id="title" required placeholder="Titulo" /><br />
           <input type="number" id="price" required placeholder="Precio" /><br />
           <input
@@ -29,7 +29,7 @@
           /><br />
           <input type="submit" value="Cargar Producto" />
         </form>
-        <%- include("./partials/table.ejs") %>
+        <%- include("./partials/table.ejs", products) %>
       </div>
 
       <div class="jumbotron">
