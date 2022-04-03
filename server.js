@@ -31,7 +31,7 @@ io.on('connection', (socket) => {
   socket.emit('messages', messages);
 
   socket.on('new-product', (data) => {
-    products.push(...products, data);
+    products.push(data);
     io.sockets.emit('products', products);
   });
 

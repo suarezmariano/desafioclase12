@@ -9,8 +9,8 @@ const addProduct = (e) => {
     thumbnail: document.getElementById('thumbnail').value,
   };
   socket.emit('new-product', product);
-  document.getElementById('product-table').reset;
-  document.getElementById('formProduct').reset;
+  //document.getElementById('product-table').reset();
+  //document.getElementById('formProduct').reset();
   return false;
 };
 
