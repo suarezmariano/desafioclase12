@@ -1,6 +1,20 @@
 const socket = io.connect();
 
-socket.on('products', { products });
+//PRODUCTOS DE TABLA
+socket.on('products', (data) => renderProd(data));
+
+const renderProd = (data) => {
+  const table = data
+    .map((elem) => {
+      return `<div>
+      <strong>${elem.title}</strong> 
+      <strong> [${elem.price}] </strong>
+      <em>: ${elem.thumbnail}</em>
+      </div>`;
+    })
+    .join(' ');
+  document.getElementById('products-table').innerHTML = table;
+};
 
 const addProduct = (e) => {
   const product = {
@@ -8,13 +22,17 @@ const addProduct = (e) => {
     price: document.getElementById('price').value,
     thumbnail: document.getElementById('thumbnail').value,
   };
+  console.log(product);
   socket.emit('new-product', product);
   return false;
 };
 
-const render = (data) => {
+//MENSAJES DE CHAT
+socket.on('messages', (data) => renderMsj(data));
+
+const renderMsj = (data) => {
   const chat = data
-    .map((elem, index) => {
+    .map((elem) => {
       return `<div>
       <strong>${elem.mail}</strong> 
       <strong> [${elem.fyh}] </strong>
@@ -25,10 +43,7 @@ const render = (data) => {
   document.getElementById('messages').innerHTML = chat;
 };
 
-socket.on('messages', (data) => render(data));
-
 const addMessage = (e) => {
-  e.preventDefault();
   const message = {
     mail: document.getElementById('mail').value,
     fyh: new Date().toLocaleString(),
