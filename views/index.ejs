@@ -19,16 +19,11 @@
       <div class="jumbotron">
         <h2>Cargar producto</h2>
         <form onsubmit="return addProduct(this)">
-          <input type="text" name="title" required placeholder="Titulo" /><br />
-          <input
-            type="number"
-            name="price"
-            required
-            placeholder="Precio"
-          /><br />
+          <input type="text" id="title" required placeholder="Titulo" /><br />
+          <input type="number" id="price" required placeholder="Precio" /><br />
           <input
             type="url"
-            name="thumbnail"
+            id="thumbnail"
             required
             placeholder="Imagen"
           /><br />

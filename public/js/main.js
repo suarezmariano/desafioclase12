@@ -6,18 +6,17 @@ socket.on('products', (data) => renderProd(data));
 const renderProd = (data) => {
   const table = data
     .map((elem) => {
-      return `<div>
-      <strong>${elem.title}</strong> 
-      <strong> [${elem.price}] </strong>
-      <em>: ${elem.thumbnail}</em>
-      </div>`;
+      return `<tr>
+      <td>${elem.title}</td> 
+      <td>${elem.price}</td>
+      <td><img src="${elem.thumbnail}"</td>
+      </tr>`;
     })
     .join(' ');
   document.getElementById('products-table').innerHTML = table;
 };
 
 const addProduct = (e) => {
-  e.preventDefault();
   const product = {
     title: document.getElementById('title').value,
     price: document.getElementById('price').value,
