@@ -27,8 +27,8 @@ const messages = [];
 
 io.on('connection', (socket) => {
   console.log('Usuario nuevo conectado');
-  socket.emit('products', products);
-  socket.emit('messages', messages);
+  io.sockets.emit('products', products);
+  io.sockets.emit('messages', messages);
 
   socket.on('new-product', (data) => {
     products.push(data);

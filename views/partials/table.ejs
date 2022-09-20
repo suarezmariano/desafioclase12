@@ -1,15 +1,3 @@
-<style type="text/css">
-  table,
-  th,
-  td {
-    border: 1px solid black;
-    border-collapse: collapse;
-  }
-  img {
-    max-width: 250px;
-    max-height: 170px;
-  }
-</style>
 <% if(products.length !==0) { %>
 <div>
   <table id="products-table">
@@ -23,8 +11,7 @@
       <td><%= products[product].title %></td>
       <td><%= products[product].price %></td>
       <td>
-        <img src="<%= products[product].thumbnail %>" /><%
-        products[product].thumbnail %>
+        <img src="<%= products[product].thumbnail %>" />
       </td>
     </tr>
     <% } %>
