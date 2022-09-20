@@ -4,7 +4,13 @@ td {
   border: 1px solid black;
   border-collapse: collapse;
 }
+table {
+  margin-top: 20px;
+}
 img {
   max-width: 250px;
   max-height: 170px;
+}
+input {
+  margin-bottom: 10px;
 }
