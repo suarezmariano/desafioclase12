@@ -8,10 +8,10 @@
     </tr>
     <% for (const product in products) {%>
     <tr>
-      <td><%= products[product].title %></td>
-      <td><%= products[product].price %></td>
+      <td><%= product.title %></td>
+      <td><%= product.price %></td>
       <td>
-        <img src="<%= products[product].thumbnail %>" />
+        <img src="<%= product.thumbnail %>" />
       </td>
     </tr>
     <% } %>
